@@ -11,7 +11,7 @@ abstract class TaskRepository {
     throw UnimplementedError();
   }
 
-  Future<void> update({
+  Future<Task> update({
     required Task task,
   }) {
     throw UnimplementedError();

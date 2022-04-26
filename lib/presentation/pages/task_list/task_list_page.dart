@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ddd_riverpod_todo_app/common/app_exception.dart';
+import 'package:flutter_ddd_riverpod_todo_app/presentation/pages/edit_task/edit_task_page.dart';
 import 'package:flutter_ddd_riverpod_todo_app/presentation/pages/task_list/task_list_page_notifier.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -11,7 +11,6 @@ class TaskListPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(taskListPageNotifier);
-    final notifier = ref.watch(taskListPageNotifier.notifier);
     return Scaffold(
       appBar: AppBar(
         title: const Text('To Do'),
@@ -25,6 +24,18 @@ class TaskListPage extends ConsumerWidget {
                   final task = state.tasks[index];
                   return ListTile(
                     title: Text(task.title),
+                    onTap: () async {
+                      await Navigator.push<void>(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return EditTaskPage(
+                              task: task,
+                            );
+                          },
+                        ),
+                      );
+                    },
                   );
                 },
               )
@@ -34,19 +45,15 @@ class TaskListPage extends ConsumerWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          try {
-            await notifier.create();
-          } on AppException catch (e) {
-            await showDialog<void>(
-              context: context,
+          await Navigator.push<void>(
+            context,
+            MaterialPageRoute(
               builder: (context) {
-                return AlertDialog(
-                  title: const Text('エラー'),
-                  content: Text(e.toString()),
-                );
+                return const EditTaskPage();
               },
-            );
-          }
+              fullscreenDialog: true,
+            ),
+          );
         },
         child: const Icon(Icons.add),
       ),

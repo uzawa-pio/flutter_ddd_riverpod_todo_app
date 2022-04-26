@@ -35,14 +35,24 @@ class SQLiteTaskRepository extends TaskRepository {
   }
 
   @override
-  Future<void> delete({required Task task}) {
-    // Task: implement delete
-    throw UnimplementedError();
+  Future<Task> update({required Task task}) async {
+    try {
+      final db = await SQLiteAdapter.db;
+      await db.update(
+        _tableName,
+        task.toJson(),
+        where: 'id = ?',
+        whereArgs: <dynamic>[task.id.value],
+      );
+      return task;
+    } on DatabaseException catch (e) {
+      throw AppException(e.toString());
+    }
   }
 
   @override
-  Future<void> update({required Task task}) {
-    // Task: implement update
+  Future<void> delete({required Task task}) {
+    // Task: implement delete
     throw UnimplementedError();
   }
 }

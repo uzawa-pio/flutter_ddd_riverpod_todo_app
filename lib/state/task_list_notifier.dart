@@ -1,6 +1,7 @@
 import 'package:flutter_ddd_riverpod_todo_app/application/task/task_application_service.dart';
 import 'package:flutter_ddd_riverpod_todo_app/application/task/task_create_command.dart';
 import 'package:flutter_ddd_riverpod_todo_app/application/task/task_data.dart';
+import 'package:flutter_ddd_riverpod_todo_app/application/task/task_update_command.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final taskListNotifierProvider =
@@ -29,5 +30,25 @@ class TaskListNotifier extends StateNotifier<List<TaskData>> {
     );
     final task = await service.create(command);
     state = [...state, task];
+  }
+
+  Future<void> update({
+    required String id,
+    required String title,
+    required String detail,
+    required bool done,
+  }) async {
+    final service = TaskApplicationService();
+    final command = TaskUpdateCommand(
+      id: id,
+      title: title,
+      detail: detail,
+      done: done,
+    );
+    final task = await service.update(command);
+    state = [
+      for (final t in state)
+        if (task.id == t.id) task else t,
+    ];
   }
 }
