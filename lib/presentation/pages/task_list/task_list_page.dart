@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ddd_riverpod_todo_app/common/app_exception.dart';
-import 'package:flutter_ddd_riverpod_todo_app/presentation/pages/to_do/to_do_page_notifier.dart';
+import 'package:flutter_ddd_riverpod_todo_app/presentation/pages/task_list/task_list_page_notifier.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ToDoPage extends ConsumerWidget {
-  const ToDoPage({
+class TaskListPage extends ConsumerWidget {
+  const TaskListPage({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(toDoPageNotifierProvider);
-    final notifier = ref.watch(toDoPageNotifierProvider.notifier);
+    final state = ref.watch(taskListPageNotifier);
+    final notifier = ref.watch(taskListPageNotifier.notifier);
     return Scaffold(
       appBar: AppBar(
         title: const Text('To Do'),
@@ -29,7 +29,7 @@ class ToDoPage extends ConsumerWidget {
                 },
               )
             : const Center(
-                child: Text('タスクはありません'),
+                child: Text('未完了タスクはありません'),
               ),
       ),
       floatingActionButton: FloatingActionButton(

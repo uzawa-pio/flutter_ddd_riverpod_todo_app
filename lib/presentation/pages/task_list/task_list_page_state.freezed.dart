@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'to_do_page_state.dart';
+part of 'task_list_page_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,30 +15,30 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ToDoPageState {
+mixin _$TaskListPageState {
   List<TaskData> get tasks => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ToDoPageStateCopyWith<ToDoPageState> get copyWith =>
+  $TaskListPageStateCopyWith<TaskListPageState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ToDoPageStateCopyWith<$Res> {
-  factory $ToDoPageStateCopyWith(
-          ToDoPageState value, $Res Function(ToDoPageState) then) =
-      _$ToDoPageStateCopyWithImpl<$Res>;
+abstract class $TaskListPageStateCopyWith<$Res> {
+  factory $TaskListPageStateCopyWith(
+          TaskListPageState value, $Res Function(TaskListPageState) then) =
+      _$TaskListPageStateCopyWithImpl<$Res>;
   $Res call({List<TaskData> tasks});
 }
 
 /// @nodoc
-class _$ToDoPageStateCopyWithImpl<$Res>
-    implements $ToDoPageStateCopyWith<$Res> {
-  _$ToDoPageStateCopyWithImpl(this._value, this._then);
+class _$TaskListPageStateCopyWithImpl<$Res>
+    implements $TaskListPageStateCopyWith<$Res> {
+  _$TaskListPageStateCopyWithImpl(this._value, this._then);
 
-  final ToDoPageState _value;
+  final TaskListPageState _value;
   // ignore: unused_field
-  final $Res Function(ToDoPageState) _then;
+  final $Res Function(TaskListPageState) _then;
 
   @override
   $Res call({
@@ -54,31 +54,31 @@ class _$ToDoPageStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$ToDoPageStateCopyWith<$Res>
-    implements $ToDoPageStateCopyWith<$Res> {
-  factory _$ToDoPageStateCopyWith(
-          _ToDoPageState value, $Res Function(_ToDoPageState) then) =
-      __$ToDoPageStateCopyWithImpl<$Res>;
+abstract class _$TaskListPageStateCopyWith<$Res>
+    implements $TaskListPageStateCopyWith<$Res> {
+  factory _$TaskListPageStateCopyWith(
+          _TaskListPageState value, $Res Function(_TaskListPageState) then) =
+      __$TaskListPageStateCopyWithImpl<$Res>;
   @override
   $Res call({List<TaskData> tasks});
 }
 
 /// @nodoc
-class __$ToDoPageStateCopyWithImpl<$Res>
-    extends _$ToDoPageStateCopyWithImpl<$Res>
-    implements _$ToDoPageStateCopyWith<$Res> {
-  __$ToDoPageStateCopyWithImpl(
-      _ToDoPageState _value, $Res Function(_ToDoPageState) _then)
-      : super(_value, (v) => _then(v as _ToDoPageState));
+class __$TaskListPageStateCopyWithImpl<$Res>
+    extends _$TaskListPageStateCopyWithImpl<$Res>
+    implements _$TaskListPageStateCopyWith<$Res> {
+  __$TaskListPageStateCopyWithImpl(
+      _TaskListPageState _value, $Res Function(_TaskListPageState) _then)
+      : super(_value, (v) => _then(v as _TaskListPageState));
 
   @override
-  _ToDoPageState get _value => super._value as _ToDoPageState;
+  _TaskListPageState get _value => super._value as _TaskListPageState;
 
   @override
   $Res call({
     Object? tasks = freezed,
   }) {
-    return _then(_ToDoPageState(
+    return _then(_TaskListPageState(
       tasks: tasks == freezed
           ? _value.tasks
           : tasks // ignore: cast_nullable_to_non_nullable
@@ -89,8 +89,10 @@ class __$ToDoPageStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ToDoPageState with DiagnosticableTreeMixin implements _ToDoPageState {
-  const _$_ToDoPageState({final List<TaskData> tasks = const <TaskData>[]})
+class _$_TaskListPageState
+    with DiagnosticableTreeMixin
+    implements _TaskListPageState {
+  const _$_TaskListPageState({final List<TaskData> tasks = const <TaskData>[]})
       : _tasks = tasks;
 
   final List<TaskData> _tasks;
@@ -103,14 +105,14 @@ class _$_ToDoPageState with DiagnosticableTreeMixin implements _ToDoPageState {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'ToDoPageState(tasks: $tasks)';
+    return 'TaskListPageState(tasks: $tasks)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'ToDoPageState'))
+      ..add(DiagnosticsProperty('type', 'TaskListPageState'))
       ..add(DiagnosticsProperty('tasks', tasks));
   }
 
@@ -118,7 +120,7 @@ class _$_ToDoPageState with DiagnosticableTreeMixin implements _ToDoPageState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ToDoPageState &&
+            other is _TaskListPageState &&
             const DeepCollectionEquality().equals(other.tasks, tasks));
   }
 
@@ -128,17 +130,18 @@ class _$_ToDoPageState with DiagnosticableTreeMixin implements _ToDoPageState {
 
   @JsonKey(ignore: true)
   @override
-  _$ToDoPageStateCopyWith<_ToDoPageState> get copyWith =>
-      __$ToDoPageStateCopyWithImpl<_ToDoPageState>(this, _$identity);
+  _$TaskListPageStateCopyWith<_TaskListPageState> get copyWith =>
+      __$TaskListPageStateCopyWithImpl<_TaskListPageState>(this, _$identity);
 }
 
-abstract class _ToDoPageState implements ToDoPageState {
-  const factory _ToDoPageState({final List<TaskData> tasks}) = _$_ToDoPageState;
+abstract class _TaskListPageState implements TaskListPageState {
+  const factory _TaskListPageState({final List<TaskData> tasks}) =
+      _$_TaskListPageState;
 
   @override
   List<TaskData> get tasks => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ToDoPageStateCopyWith<_ToDoPageState> get copyWith =>
+  _$TaskListPageStateCopyWith<_TaskListPageState> get copyWith =>
       throw _privateConstructorUsedError;
 }

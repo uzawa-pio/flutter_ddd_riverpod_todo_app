@@ -5,6 +5,7 @@ part 'task_done.freezed.dart';
 @freezed
 class TaskDone with _$TaskDone {
   const factory TaskDone(
+    // ignore: avoid_positional_boolean_parameters
     bool value,
   ) = _TaskDone;
 }

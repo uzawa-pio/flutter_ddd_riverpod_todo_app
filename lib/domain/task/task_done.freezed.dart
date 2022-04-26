@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$TaskDone {
+// ignore: avoid_positional_boolean_parameters
   bool get value => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -86,6 +87,7 @@ class __$TaskDoneCopyWithImpl<$Res> extends _$TaskDoneCopyWithImpl<$Res>
 class _$_TaskDone implements _TaskDone {
   const _$_TaskDone(this.value);
 
+// ignore: avoid_positional_boolean_parameters
   @override
   final bool value;
 
@@ -115,7 +117,7 @@ class _$_TaskDone implements _TaskDone {
 abstract class _TaskDone implements TaskDone {
   const factory _TaskDone(final bool value) = _$_TaskDone;
 
-  @override
+  @override // ignore: avoid_positional_boolean_parameters
   bool get value => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

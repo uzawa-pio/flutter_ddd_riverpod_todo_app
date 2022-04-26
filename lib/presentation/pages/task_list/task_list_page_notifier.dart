@@ -1,20 +1,21 @@
 import 'package:flutter_ddd_riverpod_todo_app/application/task/task_application_service.dart';
 import 'package:flutter_ddd_riverpod_todo_app/application/task/task_create_command.dart';
 import 'package:flutter_ddd_riverpod_todo_app/application/task/task_data.dart';
-import 'package:flutter_ddd_riverpod_todo_app/presentation/pages/to_do/to_do_page_state.dart';
+import 'package:flutter_ddd_riverpod_todo_app/presentation/pages/task_list/task_list_page_state.dart';
 import 'package:flutter_ddd_riverpod_todo_app/state/task_list_notifier.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final toDoPageNotifierProvider =
-    StateNotifierProvider.autoDispose<ToDoPageNotifier, ToDoPageState>(
+final taskListPageNotifier =
+    StateNotifierProvider.autoDispose<TaskListPageNotifier, TaskListPageState>(
   (ref) {
     final tasks = ref.watch(taskListNotifierProvider);
-    return ToDoPageNotifier(tasks);
+    return TaskListPageNotifier(tasks);
   },
 );
 
-class ToDoPageNotifier extends StateNotifier<ToDoPageState> {
-  ToDoPageNotifier(List<TaskData> tasks) : super(const ToDoPageState()) {
+class TaskListPageNotifier extends StateNotifier<TaskListPageState> {
+  TaskListPageNotifier(List<TaskData> tasks)
+      : super(const TaskListPageState()) {
     state = state.copyWith(tasks: tasks);
   }
 
