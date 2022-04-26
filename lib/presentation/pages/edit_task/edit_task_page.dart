@@ -26,6 +26,59 @@ class EditTaskPage extends HookConsumerWidget {
       appBar: AppBar(
         title: Text(isNew ? '新規作成' : '編集'),
         centerTitle: true,
+        actions: [
+          if (!isNew)
+            IconButton(
+              onPressed: () async {
+                final canDelete = await showDialog<bool>(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          title: const Text('本当に削除しますか？'),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop(false);
+                              },
+                              child: const Text('キャンセル'),
+                            ),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop(true);
+                              },
+                              child: const Text('OK'),
+                            ),
+                          ],
+                        );
+                      },
+                    ) ==
+                    true;
+
+                if (!canDelete) {
+                  return;
+                }
+                try {
+                  if (task != null) {
+                    await notifier.delete(task: task!);
+                  }
+                  Navigator.of(context).pop();
+                } on AppException catch (e) {
+                  await showDialog<void>(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: const Text('エラー'),
+                        content: Text(e.toString()),
+                      );
+                    },
+                  );
+                }
+              },
+              icon: const Icon(
+                Icons.delete,
+              ),
+            ),
+        ],
       ),
       body: SafeArea(
         child: ListView(

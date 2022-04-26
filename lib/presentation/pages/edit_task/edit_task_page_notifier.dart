@@ -1,3 +1,4 @@
+import 'package:flutter_ddd_riverpod_todo_app/application/task/task_data.dart';
 import 'package:flutter_ddd_riverpod_todo_app/state/task_list_notifier.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -34,5 +35,12 @@ class EditTaskPageNotifier extends StateNotifier<void> {
         done: done,
       );
     }
+  }
+
+  Future<void> delete({
+    required TaskData task,
+  }) async {
+    final notifier = _read(taskListNotifierProvider.notifier);
+    await notifier.delete(id: task.id);
   }
 }

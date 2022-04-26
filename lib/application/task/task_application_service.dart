@@ -1,5 +1,6 @@
 import 'package:flutter_ddd_riverpod_todo_app/application/task/task_create_command.dart';
 import 'package:flutter_ddd_riverpod_todo_app/application/task/task_data.dart';
+import 'package:flutter_ddd_riverpod_todo_app/application/task/task_delete_command.dart';
 import 'package:flutter_ddd_riverpod_todo_app/application/task/task_update_command.dart';
 import 'package:flutter_ddd_riverpod_todo_app/domain/task/task.dart';
 import 'package:flutter_ddd_riverpod_todo_app/domain/task/task_detail.dart';
@@ -49,5 +50,13 @@ class TaskApplicationService {
     );
     await _repository.update(task: task);
     return TaskData.fromDomain(task);
+  }
+
+  Future<void> delete(
+    TaskDeleteCommand command,
+  ) async {
+    final id = TaskId(command.id);
+
+    await _repository.delete(id: id);
   }
 }

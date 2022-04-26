@@ -1,4 +1,5 @@
 import 'package:flutter_ddd_riverpod_todo_app/domain/task/task.dart';
+import 'package:flutter_ddd_riverpod_todo_app/domain/task/task_id.dart';
 
 abstract class TaskRepository {
   Future<List<Task>> fetchAll() {
@@ -18,7 +19,7 @@ abstract class TaskRepository {
   }
 
   Future<void> delete({
-    required Task task,
+    required TaskId id,
   }) {
     throw UnimplementedError();
   }

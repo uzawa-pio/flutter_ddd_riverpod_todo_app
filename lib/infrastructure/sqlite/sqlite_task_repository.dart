@@ -1,6 +1,7 @@
 import 'package:flutter_ddd_riverpod_todo_app/adapter/sqlite_adapter.dart';
 import 'package:flutter_ddd_riverpod_todo_app/common/app_exception.dart';
 import 'package:flutter_ddd_riverpod_todo_app/domain/task/task.dart';
+import 'package:flutter_ddd_riverpod_todo_app/domain/task/task_id.dart';
 import 'package:flutter_ddd_riverpod_todo_app/domain/task/task_repository.dart';
 import 'package:sqflite/sqlite_api.dart';
 
@@ -51,8 +52,16 @@ class SQLiteTaskRepository extends TaskRepository {
   }
 
   @override
-  Future<void> delete({required Task task}) {
-    // Task: implement delete
-    throw UnimplementedError();
+  Future<void> delete({required TaskId id}) async {
+    try {
+      final db = await SQLiteAdapter.db;
+      await db.delete(
+        _tableName,
+        where: 'id = ?',
+        whereArgs: <dynamic>[id.value],
+      );
+    } on DatabaseException catch (e) {
+      throw AppException(e.toString());
+    }
   }
 }
