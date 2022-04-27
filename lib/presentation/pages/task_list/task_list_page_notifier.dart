@@ -8,7 +8,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 final taskListPageNotifier =
     StateNotifierProvider.autoDispose<TaskListPageNotifier, TaskListPageState>(
   (ref) {
-    final tasks = ref.watch(taskListNotifierProvider);
+    final tasks =
+        ref.watch(taskListNotifierProvider).where((x) => !x.done).toList();
     return TaskListPageNotifier(tasks);
   },
 );
