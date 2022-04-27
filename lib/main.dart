@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ddd_riverpod_todo_app/domain/task/task_repository.dart';
 import 'package:flutter_ddd_riverpod_todo_app/infrastructure/sqlite/sqlite_task_repository.dart';
 import 'package:flutter_ddd_riverpod_todo_app/presentation/pages/main/main_page.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:injector/injector.dart';
 
 void main() {

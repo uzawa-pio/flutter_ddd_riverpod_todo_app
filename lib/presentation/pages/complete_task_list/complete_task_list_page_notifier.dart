@@ -1,7 +1,7 @@
 import 'package:flutter_ddd_riverpod_todo_app/application/task/task_data.dart';
 import 'package:flutter_ddd_riverpod_todo_app/presentation/pages/complete_task_list/complete_task_list_page_state.dart';
 import 'package:flutter_ddd_riverpod_todo_app/state/task_list_notifier.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final completeTaskListPageNotifier = StateNotifierProvider.autoDispose<
     CompleteTaskListPageNotifier, CompleteTaskListPageState>(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ddd_riverpod_todo_app/presentation/pages/edit_task/edit_task_page.dart';
 import 'package:flutter_ddd_riverpod_todo_app/presentation/pages/task_list/task_list_page_notifier.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class TaskListPage extends ConsumerWidget {
   const TaskListPage({
@@ -11,6 +11,7 @@ class TaskListPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(taskListPageNotifier);
+    final notifier = ref.watch(taskListPageNotifier.notifier);
     return Scaffold(
       appBar: AppBar(
         title: const Text('To Do'),
@@ -24,6 +25,17 @@ class TaskListPage extends ConsumerWidget {
                   final task = state.tasks[index];
                   return ListTile(
                     title: Text(task.title),
+                    subtitle: Text(
+                      task.detail,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    trailing: Checkbox(
+                      value: task.done,
+                      onChanged: (value) {
+                        notifier.toggle(task: task, done: value ?? false);
+                      },
+                    ),
                     onTap: () async {
                       await Navigator.push<void>(
                         context,

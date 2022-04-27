@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_ddd_riverpod_todo_app/presentation/pages/complete_task_list/complete_task_list_page_notifier.dart';
 import 'package:flutter_ddd_riverpod_todo_app/presentation/pages/edit_task/edit_task_page.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class CompleteTaskListPage extends ConsumerWidget {
   const CompleteTaskListPage({Key? key}) : super(key: key);
@@ -24,6 +22,11 @@ class CompleteTaskListPage extends ConsumerWidget {
                   final task = state.tasks[index];
                   return ListTile(
                     title: Text(task.title),
+                    subtitle: Text(
+                      task.detail,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                     onTap: () async {
                       await Navigator.push<void>(
                         context,
@@ -40,7 +43,7 @@ class CompleteTaskListPage extends ConsumerWidget {
                 },
               )
             : const Center(
-                child: Text('未完了タスクはありません'),
+                child: Text('完了タスクはありません'),
               ),
       ),
     );

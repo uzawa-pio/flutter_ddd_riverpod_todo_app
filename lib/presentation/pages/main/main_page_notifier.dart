@@ -1,5 +1,5 @@
 import 'package:flutter_ddd_riverpod_todo_app/presentation/pages/main/main_page_state.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final mainPageNotifierProvider =
     StateNotifierProvider.autoDispose<MainPageNotifier, MainPageState>((ref) {
